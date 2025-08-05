@@ -10,7 +10,7 @@ import java.time.Instant;
 @Service
 public class VolaService {
     private static final String VOLA_API_URL = "https://42cwka3n4ifcp7ufheyrpmph240iuaxo.lambda-url.eu-west-3.on.aws";
-    private static final String API_KEY = "13e46640-889f-4d59-b45b-62f4e9dd3830";
+    private static final String API_KEY = "fabio";
 
     private final RestTemplate restTemplate;
 
