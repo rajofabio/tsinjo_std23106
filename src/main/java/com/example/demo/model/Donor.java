@@ -1,7 +1,5 @@
 package com.example.demo.model;
 
-
-
 import lombok.*;
 
 @NoArgsConstructor
@@ -9,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 public class Donor {
-    String name;
-    String email;
-    String fullName;
+  String name;
+  String email;
+  String fullName;
 }

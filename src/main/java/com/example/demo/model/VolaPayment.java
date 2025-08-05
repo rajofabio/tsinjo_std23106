@@ -9,17 +9,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-
 public class VolaPayment {
+  private String id;
+  private String verificationStatus;
+  private PspPayment pspPayment;
+
+  public static class PspPayment {
     private String id;
-    private String verificationStatus;
-    private PspPayment pspPayment;
-
-
-    public static class PspPayment {
-        private String id;
-        private int amount;
-
-
-    }
+    private int amount;
+  }
 }

@@ -9,26 +9,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TsinjoController {
-    private final TsinjoService tsinjoService;
+  private final TsinjoService tsinjoService;
 
-    public TsinjoController(TsinjoService tsinjoService) {
-        this.tsinjoService = tsinjoService;
-    }
+  public TsinjoController(TsinjoService tsinjoService) {
+    this.tsinjoService = tsinjoService;
+  }
 
-    @GetMapping("/")
-    public String showAllTransactions(Model model) {
-        model.addAttribute("donations", tsinjoService.getAllDonations());
-        return "transactions";
-    }
+  @GetMapping("/")
+  public String showAllTransactions(Model model) {
+    model.addAttribute("donations", tsinjoService.getAllDonations());
+    return "transactions";
+  }
 
-    @PostMapping("/donate")
-    public String submitDonation(
-            @RequestParam String email,
-            @RequestParam String fullName,
-            @RequestParam int amount,  // Changé de double à int pour correspondre au service
-            @RequestParam String pspPaymentId) {  // Renommé paymentMethod -> pspPaymentId
+  @PostMapping("/donate")
+  public String submitDonation(
+      @RequestParam String email,
+      @RequestParam String fullName,
+      @RequestParam int amount, // Changé de double à int pour correspondre au service
+      @RequestParam String pspPaymentId) { // Renommé paymentMethod -> pspPaymentId
 
-        tsinjoService.createDonation(email, fullName, amount, pspPaymentId);
-        return "redirect:/";
-    }
+    tsinjoService.createDonation(email, fullName, amount, pspPaymentId);
+    return "redirect:/";
+  }
 }
