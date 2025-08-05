@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tsinjo - Transactions</title>
+    <style>
+        .transaction { margin: 20px 0; padding: 10px; border: 1px solid #ddd; }
+        .donation { background-color: #f0fff0; }
+        .help { background-color: #fff0f0; }
+    </style>
+</head>
+<body>
+<h1>Tsinjo - Fonds d'urgence HEI</h1>
+
+<!-- Formulaire de don -->
+<div>
+    <h2>Faire un don</h2>
+    <form method="post" action="/donate">
+        <div>
+            <label>Email: <input type="email" name="email" required></label>
+        </div>
+        <div>
+            <label>Nom complet: <input type="text" name="fullName" required></label>
+        </div>
+        <div>
+            <label>Montant: <input type="number" name="amount" step="0.01" required></label>
+        </div>
+        <div>
+            <label>Méthode de paiement:
+                <select name="paymentMethod" required>
+                    <option value="CARD">Carte</option>
+                    <option value="MOBILE_MONEY">Mobile Money</option>
+                </select>
+            </label>
+        </div>
+        <button type="submit">Soumettre</button>
+    </form>
+</div>
+
+<!-- Liste des transactions -->
+<h2>Historique des transactions</h2>
+
+<!-- Dons -->
+<div th:each="donation : ${donations}" class="transaction donation">
+    <h3>Don de <span th:text="${donation.donor.fullName}"></span></h3>
+    <p>Email: <span th:text="${donation.donor.email}"></span></p>
+    <p>Montant: <span th:text="${donation.payment.amount}"></span> EUR</p>
+    <p>Méthode: <span th:text="${donation.payment.paymentMethod}"></span></p>
+    <p>Date: <span th:text="${donation.payment.date}"></span></p>
+    <p>Statut: <span th:text="${donation.payment.status}"></span></p>
+</div>
+
+<!-- Aides -->
+<div th:each="help : ${helps}" class="transaction help">
+    <h3>Aide à <span th:text="${help.beneficiary.fullName}"></span></h3>
+    <p>Email: <span th:text="${help.beneficiary.email}"></span></p>
+    <p>Montant: <span th:text="${help.payment.amount}"></span> EUR</p>
+    <p>Date: <span th:text="${help.payment.date}"></span></p>
+    <p>Description: <span th:text="${help.accidentDescription}"></span></p>
+</div>
+</body>
+</html>

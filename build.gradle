@@ -109,7 +109,9 @@ jacocoTestReport {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
     implementation 'com.amazonaws.serverless:aws-serverless-java-container-springboot3:2.1.0'
